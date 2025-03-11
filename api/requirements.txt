@@ -3,4 +3,5 @@ requests
 pytest
 uvicorn
 httpx
+pandas
 
