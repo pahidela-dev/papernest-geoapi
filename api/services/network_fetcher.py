@@ -13,6 +13,10 @@ class NetworkFetcher:
     
     @staticmethod
     def _get_lambert93(query: str) -> tuple[float, float]:
+        """
+        Access the data.geopf.api and retrieves the first item in the list of found features
+        Returns the a tuple representing the Lmabert93 pair of coordinates of said item
+        """
         geocodage: dict = requests.get(
             url='https://data.geopf.fr/geocodage/search/', 
             params={'q': query}, 
@@ -61,9 +65,17 @@ class NetworkFetcher:
         return closest_points
 
     def get_points_under_km(self) -> dict:
+        """
+        Mainly used for debugging reasons
+        """
         return self._get_closest_points(self.query)
 
     def get_network_coverage(self) -> dict:
+        """
+        Gets the closest points based on the user query,
+        and then builds and returns the network coverage
+        of the closest points for each operator.
+        """
         closest_points = self._get_closest_points(self.query)
         network_coverage = {}
         for point in closest_points:

@@ -13,4 +13,5 @@ async def search(q: str):
 
 @router.get("/search_under_km/")
 async def search(q: str):
+    """Endpoint used for developing purposes"""
     return NetworkFetcher(q).get_points_under_km()

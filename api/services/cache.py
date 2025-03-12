@@ -1,1 +1,1 @@
-cache = {}
+cache = {}  # Simple cache dictionary to speed up same queries
