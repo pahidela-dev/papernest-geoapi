@@ -72,3 +72,5 @@ It would be fair to say that 5.6 km could make no sense when it comes to network
 
 I started following a TDD approach to design and implement the API until I realized that the example in the test wasn't necessarily showing a correct response body (or that's what I think). Since I was only testing the API root "/" endpoint, I chose to drop the tests as soon as I had everything working as expected. 
 
+### 5. Cache
+I have implemented as small cache in a separate module (just a simple Python dictionary) to speed up the processing of data when a query arrives at one endpoint. Since both exposed endpoints are using the same method under the hood to get the data, it makes a lot of sense to cache this method so both endpoints can benefit from it. Take into account that upon bringing down the server, the cache will be restarted.
